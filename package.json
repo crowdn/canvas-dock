@@ -1,0 +1,23 @@
+{
+  "name": "canvas-dock",
+  "version": "1.0.0",
+  "description": "一个用canvas模拟Dock动画效果的demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "canvas",
+    "animation",
+    "dock",
+    "动画",
+    "程序坞"
+  ],
+  "author": "pgYou",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^2.9.12"
+  }
+}

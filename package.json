@@ -15,6 +15,7 @@
     "动画",
     "程序坞"
   ],
+  "gitrepository": "https://github.com/crowdn/canvas-dock.git",
   "author": "pgYou",
   "license": "MIT",
   "devDependencies": {

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "vite --port 8080",
     "build": "vite build",
+    "publish": "outDir=docs vite build --base=/canvas-dock/",
     "preview": "vite preview"
   },
   "keywords": [

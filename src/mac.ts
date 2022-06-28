@@ -8,7 +8,7 @@ export default class Mac {
   constructor(container: HTMLDivElement) {
     this.container = container;
     const cvasDom = document.createElement('canvas', {});
-    const macBg = document.querySelector('#bg') as HTMLImageElement;
+    const macBg = document.querySelector('#mac') as HTMLImageElement;
 
     this.canvas = cvasDom;
     cvasDom.width = 1200;

@@ -73,7 +73,7 @@ class Dock {
     this.ctx.save();
     this.drawRect(appRect, radius, style);
     this.ctx.clip();
-    const img = document.getElementById('img');
+    const img = document.getElementById('icon');
 
     this.ctx.drawImage(
       img as CanvasImageSource,

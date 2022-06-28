@@ -7,6 +7,6 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
-    outDir: './docs',
+    outDir: process.env.outDir || './dist',
   },
 });

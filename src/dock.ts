@@ -8,9 +8,9 @@ class Dock {
   gapW = 8;
   barHeight = this.baseAppwidth + this.gapW * 2;
   appRects: Rect[] = [];
-  barRect: Rect;
+  barRect: Rect | null = null;
   ctx: CanvasRenderingContext2D;
-  mousePoint: Point;
+  mousePoint: Point | null = null;
   isMouseEnterBar: boolean = false;
   centerAppInfo: { index: number; delta?: number };
 
@@ -34,20 +34,20 @@ class Dock {
     appNum && (this.appNum = appNum);
     bottom && (this.bottom = bottom);
   }
-  setAppNum(appNum) {
+  setAppNum(appNum: number) {
     this.appNum = appNum;
     this.render();
   }
-  setzoomRatio(zoomRatio) {
+  setzoomRatio(zoomRatio: number) {
     this.zoomRatio = zoomRatio;
     this.render();
   }
-  setBaseAppwidth(baseAppwidth) {
+  setBaseAppwidth(baseAppwidth: number) {
     this.baseAppwidth = baseAppwidth;
     this.render();
   }
 
-  drawRect(rect, r = 8, strokeStyle = '#333') {
+  drawRect(rect: Rect, r = 8, strokeStyle = '#333') {
     this.ctx.strokeStyle = strokeStyle;
     var ptA = new Point(rect.x + r, rect.y);
     var ptB = new Point(rect.x + rect.width, rect.y);
@@ -62,13 +62,13 @@ class Dock {
     this.ctx.arcTo(ptE.x, ptE.y, ptA.x, ptA.y, r);
     // this.ctx.stroke();
   }
-  drawApps(appRects) {
+  drawApps(appRects: Rect[]) {
     appRects.forEach((rect, index) => {
       const style = '#333';
       this.drawApp(rect, style);
     });
   }
-  drawApp(appRect: Rect, style) {
+  drawApp(appRect: Rect, style: any) {
     const radius = appRect.width * 0.3;
     this.ctx.save();
     this.drawRect(appRect, radius, style);
@@ -115,7 +115,7 @@ class Dock {
     if (this.isMouseEnterBar) {
       const { barRect: baseBarRect, appRects: baseAppRects } = baseLayout;
       const relativeMousePoint = peniko.convertRelativeCoordinate(
-        this.mousePoint,
+        this.mousePoint!,
         baseBarRect
       );
       // 根据鼠标位置，找到最近的一个app
@@ -231,7 +231,7 @@ class Dock {
     this.ctx.filter = 'blur(1px)';
     this.ctx.fillStyle = '#fff';
     this.ctx.globalAlpha = 0.5;
-    this.drawRect(this.barRect, 12);
+    this.drawRect(this.barRect!, 12);
     this.ctx.clip();
     this.ctx.fill();
     this.ctx.restore();
@@ -243,7 +243,7 @@ class Dock {
     this.layout();
     this.draw();
   }
-  onMouseMove(e) {
+  onMouseMove(e: any) {
     const cvasRect = this.ctx.canvas.getBoundingClientRect();
     this.mousePoint = peniko.convertRelativeCoordinate(
       e,
@@ -261,9 +261,9 @@ class Dock {
     this.render(true);
     this.ctx.canvas.addEventListener('mousemove', this.onMouseMove.bind(this));
   }
-  getZoomScale(appRect, barRect) {
+  getZoomScale(appRect: Rect, barRect: Rect) {
     const relativeMousePoint = peniko.convertRelativeCoordinate(
-      this.mousePoint,
+      this.mousePoint!,
       barRect
     );
     const centerPX = appRect.x + appRect.width / 2;

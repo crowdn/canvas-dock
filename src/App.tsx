@@ -11,6 +11,7 @@ export default function App() {
   useEffect(() => {
     if (canvasRef.current) {
       macRef.current = new Mac(canvasRef.current);
+      // @ts-ignore
       window['__mac__'] = macRef.current;
     }
   }, [canvasRef.current]);

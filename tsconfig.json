@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es5",
+    "module": "esnext",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "lib": ["es6", "DOM"],
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/index.ts", "src"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
